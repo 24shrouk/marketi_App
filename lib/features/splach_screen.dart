@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:marketi/core/constants/assets_constant.dart';
 import 'package:marketi/core/utils/my_colors.dart';
 import 'package:marketi/features/home/views/home_screen.dart';
+import 'package:marketi/features/onboard/view/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+      Navigator.pushReplacementNamed(context, OnBoardingScreen.routeName);
     });
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketi/features/home/views/home_screen.dart';
+import 'package:marketi/features/onboard/view/onboarding_screen.dart';
 import 'package:marketi/features/splach_screen.dart';
 
 void main() {
@@ -16,6 +17,7 @@ class MarketiApp extends StatelessWidget {
       initialRoute: SplashScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
+        OnBoardingScreen.routeName: (context) => const OnBoardingScreen(),
         HomeScreen.routeName: (context) => const HomeScreen(),
       },
     );
