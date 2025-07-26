@@ -1,10 +1,11 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketi/core/constants/assets_constant.dart';
 import 'package:marketi/core/utils/My_font_style.dart';
 import 'package:marketi/core/utils/my_colors.dart';
 import 'package:marketi/core/widgets/custom_button.dart';
-import 'package:marketi/features/home/views/home_screen.dart';
+import 'package:marketi/features/auth/view/login_screen.dart';
+import 'package:marketi/features/auth/view_model/login_cubit/login_cubit.dart';
 import 'package:marketi/features/onboard/model/onboarding_model.dart';
 import 'package:marketi/features/onboard/widgets/custom_animated_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -113,9 +114,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             curve: Curves.easeIn,
                           );
                         } else {
-                          Navigator.pushReplacementNamed(
+                          Navigator.pushReplacement(
                             context,
-                            HomeScreen.routeName,
+                            MaterialPageRoute(
+                              builder: (context) => BlocProvider(
+                                create: (context) => LoginCubit(),
+                                child: LoginScreen(),
+                              ),
+                            ),
                           );
                         }
                       },
