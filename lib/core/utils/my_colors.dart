@@ -4,6 +4,7 @@ class MyColors {
   static const Color navyColor = Color(0xff51526C);
   static const Color greyScaleColor = Color(0xff7993C5);
   static const Color greyColor = Color(0xff8C99B2);
+  static const Color hintColor = Color(0xff929BAB);
   static const Color lightBlue100Color = Color(0xff3F80FF);
   static const Color lightBlue300Color = Color(0xff5286EC);
   static const Color lightBlue400Color = Color(0xff658DD9);

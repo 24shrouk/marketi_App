@@ -16,8 +16,11 @@ class CustomTextFormFeild extends StatelessWidget {
     this.controller,
     this.validator,
     this.hintStyle,
+    this.keyboardType,
+    this.border,
   });
 
+  final double? border;
   final String? hint;
   final int? maxLines;
   final void Function(String?)? onSaved;
@@ -30,11 +33,12 @@ class CustomTextFormFeild extends StatelessWidget {
   TextEditingController? controller;
   String? Function(String?)? validator;
   TextStyle? hintStyle;
+  TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      keyboardType: TextInputType.multiline,
+      keyboardType: keyboardType,
       maxLines: maxLines,
       minLines: 1,
       obscureText: obscurText,
@@ -60,8 +64,10 @@ class CustomTextFormFeild extends StatelessWidget {
 
   OutlineInputBorder buildBorder([color]) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(color: color ?? Colors.white),
+      borderRadius: border == null
+          ? BorderRadius.circular(10)
+          : BorderRadius.circular(border!),
+      borderSide: BorderSide(color: color ?? MyColors.lightBlue700Color),
     );
   }
 }
