@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:marketi/features/auth/model/request/login_request.dart';
 import 'package:marketi/features/auth/model/request/register_request.dart';
 import 'package:marketi/features/auth/model/response/login_response.dart';
@@ -38,6 +37,7 @@ abstract class ApiAuth {
     if (response.statusCode == 200) {
       var responseBody = response.body;
       var json = jsonDecode(responseBody);
+
       return LogInResponse.fromJson(json);
     } else {
       var errorBody = jsonDecode(response.body);

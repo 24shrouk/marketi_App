@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marketi/core/constants/assets_constant.dart';
 import 'package:marketi/core/utils/my_colors.dart';
 import 'package:marketi/features/cart/views/cart_screen.dart';
 import 'package:marketi/features/favorite/Views/favorite_screen.dart';
+import 'package:marketi/features/home/view_model/products_cubit/home_products_cubit.dart';
 import 'package:marketi/features/home/views/home_screen.dart';
 import 'package:marketi/features/menue/views/menu_screen.dart';
 
@@ -18,7 +20,6 @@ class AppSection extends StatefulWidget {
 class _AppSectionState extends State<AppSection> {
   List<Widget> widgetList = [
     HomeScreen(),
-
     CartScreen(),
     FavoriteScreen(),
     MenuScreen(),
@@ -28,6 +29,13 @@ class _AppSectionState extends State<AppSection> {
 
   @override
   Widget build(BuildContext context) {
+    Widget currentPage = widgetList[index];
+    if (index == 0) {
+      currentPage = BlocProvider(
+        create: (context) => HomeProductsCubit()..getHomeProducts(),
+        child: currentPage,
+      );
+    }
     return Scaffold(
       backgroundColor: MyColors.whiteColor,
       bottomNavigationBar: BottomNavigationBar(
@@ -105,7 +113,7 @@ class _AppSectionState extends State<AppSection> {
           ),
         ],
       ),
-      body: SafeArea(child: widgetList[index]),
+      body: SafeArea(child: currentPage),
     );
   }
 }
