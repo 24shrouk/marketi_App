@@ -9,10 +9,11 @@ import 'package:marketi/core/utils/my_colors.dart';
 import 'package:marketi/core/utils/validator.dart';
 import 'package:marketi/core/widgets/custom_button.dart';
 import 'package:marketi/core/widgets/custom_textbox.dart';
-import 'package:marketi/features/auth/view/forget_password_with_phone_screen.dart';
+import 'package:marketi/features/auth/view/forget_password_with_email_screen.dart';
 import 'package:marketi/features/auth/view/register_screen.dart';
 import 'package:marketi/features/auth/view_model/login_cubit/login_cubit.dart';
 import 'package:marketi/features/auth/view_model/register_cubit/register_cubit.dart';
+import 'package:marketi/features/auth/view_model/send_password_email_cubit/send_password_email_cubit.dart';
 import 'package:marketi/features/auth/widgets/plateform_container.dart';
 import 'package:marketi/features/home/views/home_screen.dart';
 import 'package:toastification/toastification.dart';
@@ -136,9 +137,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       Spacer(),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacementNamed(
+                          Navigator.push(
                             context,
-                            ForgetPasswordWithPhoneScreen.routeName,
+                            MaterialPageRoute(
+                              builder: (context) => BlocProvider(
+                                create: (context) => SendPasswordEmailCubit(),
+                                child: ForgetPasswordWithEmailScreen(),
+                              ),
+                            ),
                           );
                         },
                         child: Text(

@@ -17,8 +17,10 @@ class CustomTextFormFeild extends StatelessWidget {
     this.validator,
     this.hintStyle,
     this.keyboardType,
+    this.border,
   });
 
+  final double? border;
   final String? hint;
   final int? maxLines;
   final void Function(String?)? onSaved;
@@ -62,7 +64,9 @@ class CustomTextFormFeild extends StatelessWidget {
 
   OutlineInputBorder buildBorder([color]) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: border == null
+          ? BorderRadius.circular(10)
+          : BorderRadius.circular(border!),
       borderSide: BorderSide(color: color ?? MyColors.lightBlue700Color),
     );
   }

@@ -28,7 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool isChecked = false;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  TextEditingController name = TextEditingController();
+  // TextEditingController name = TextEditingController();
   TextEditingController userName = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -89,26 +89,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           height: 105,
                         ),
                       ),
-                      Text(
-                        'Your Name',
-                        style: MyFontStyle.font12Meduim.copyWith(
-                          color: MyColors.darkBlue900Color,
-                        ),
-                      ),
-                      CustomTextFormFeild(
-                        controller: name,
-                        validator: Validator.validateName,
-                        keyboardType: TextInputType.name,
-                        hint: 'full name',
-                        hintStyle: MyFontStyle.font12Regular.copyWith(
-                          color: MyColors.hintColor,
-                        ),
-                        prefixIcon: const Icon(
-                          Icons.person_outlined,
-                          color: MyColors.darkBlue900Color,
-                        ),
-                      ),
 
+                      // Text(
+                      //   'Your Name',
+                      //   style: MyFontStyle.font12Meduim.copyWith(
+                      //     color: MyColors.darkBlue900Color,
+                      //   ),
+                      // ),
+                      // CustomTextFormFeild(
+                      //   controller: name,
+                      //   validator: Validator.validateName,
+                      //   keyboardType: TextInputType.name,
+                      //   hint: 'full name',
+                      //   hintStyle: MyFontStyle.font12Regular.copyWith(
+                      //     color: MyColors.hintColor,
+                      //   ),
+                      //   prefixIcon: const Icon(
+                      //     Icons.person_outlined,
+                      //     color: MyColors.darkBlue900Color,
+                      //   ),
+                      // ),
                       Text(
                         'Username',
                         style: MyFontStyle.font12Meduim.copyWith(
@@ -212,7 +212,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       CustomTextFormFeild(
                         controller: confirmePassword,
                         validator: (value) {
-                          Validator.validateConfirmPassword(
+                          return Validator.validateConfirmPassword(
                             value,
                             password.text,
                           );
@@ -247,12 +247,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
                             await context.read<RegisterCubit>().register(
-                              name: name.text,
+                              name: userName.text,
                               phone: phone.text,
                               email: email.text,
                               password: password.text,
                               confirmPassword: confirmePassword.text,
                             );
+                            log(userName.text);
                             log(email.text);
                             log(password.text);
                           }

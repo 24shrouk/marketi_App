@@ -19,6 +19,10 @@ class MyFontStyle {
     fontSize: 12,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle font20Meduim = GoogleFonts.poppins(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+  );
   static TextStyle font16Meduim = GoogleFonts.poppins(
     fontSize: 16,
     fontWeight: FontWeight.w500,
